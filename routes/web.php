@@ -15,16 +15,15 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/keygen', function() {
-    echo str_random(32);
-});
+$router->get('/teams', 'TeamsController@showAllTeams');
+$router->get('/teams/{id}', 'TeamsController@showTeam');
+$router->post('/teams/create', 'TeamsController@createTeam');
+$router->put('/teams/update/{id}', 'TeamsController@updateTeam');
+$router->delete('/teams/delete/{id}', 'TeamsController@deleteTeam');
 
+$router->get('/players', 'PlayersController@showAllPlayers');
+$router->get('/players/{id}', 'PlayersController@showPlayer');
+$router->post('/players/create', 'PlayersController@createPlayer');
+$router->put('/players/update/{id}', 'PlayersController@updatePlayer');
+$router->delete('/players/delete/{id}', 'PlayersController@deletePlayer');
 
-$router->get('/companies', 'CompaniesController@showAllCompanies');
-$router->get('/companies/{id}', 'CompaniesController@getCompanyById');
-
-$router->get('/companies/types/{type}', 'CompaniesController@getCompanyByType');
-
-$router->get('/employees','EmployeesController@showAllEmployees');
-$router->get('/employees/{id}', 'EmployeesController@showEmployeeById');
-$router->get('/employees?job={job}', 'EmployeesController@showEmployeeByJob');
